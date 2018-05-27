@@ -22,13 +22,12 @@ class VPNMonitorCommand(object):
     def monitor(self):
         if 'VPN_MONITOR' in os.environ:
             router = os.environ['VPN_MONITOR'].split(' ')
-            return router[0] # , router[1:]
+            return router[0]
 
     async def connect(self):
         return await asyncio.open_unix_connection(self.socket)
 
     async def handle_incoming(self):
-        msg = ''
         wait_for = None
         while True:
             _msg = (await self.reader.readline()).decode('utf-8')
