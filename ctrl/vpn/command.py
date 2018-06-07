@@ -16,4 +16,4 @@ class VPNSubcommand(object):
 
     async def handle_monitor(self, server_addr, *args, loop=None):
         return await component.getUtility(
-            IVPNListener).connect(server_addr, *args)
+            IVPNListener).listen(server_addr, *args)
